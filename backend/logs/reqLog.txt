@@ -1,0 +1,8 @@
+20230502	21:40:30	bfaf76f9-eee5-4d68-9cd9-d900df974630	GET	undefined	/
+20230502	21:40:30	f9965110-570b-4e9c-a269-77649ec7103e	GET	undefined	/favicon.ico
+20230502	21:40:37	04158ddf-23b8-4d5c-b9fc-5435503eda8c	GET	undefined	/users
+20230502	21:40:38	6f0cf718-0065-4dc7-a32f-6159e52492b8	GET	undefined	/favicon.ico
+20230502	21:40:46	6039dfa3-fec7-4671-aad6-dcacc0b13b77	GET	undefined	/users/1
+20230502	21:40:46	facd5ba3-494c-4826-b192-143e5215c0b5	GET	undefined	/favicon.ico
+20230502	21:40:48	e46af94a-9965-4b0a-b9ef-b79245f889eb	GET	undefined	/users/2
+20230502	21:40:48	598e8099-173d-44af-b812-578490aae811	GET	undefined	/favicon.ico

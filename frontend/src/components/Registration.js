@@ -89,7 +89,7 @@ const Registration = () => {
 
 				{errMsg && (
 					<Stack sx={{ width: '100%', marginBottom: "1rem" }} spacing={2}>
-						<Alert fullWidth severity="error">{errMsg}</Alert>
+						<Alert severity="error">{errMsg}</Alert>
 					</Stack>
 				)}
 				
@@ -106,7 +106,7 @@ const Registration = () => {
 					</>
 				) : (
 					<>
-						<form onSubmit={(e) => handleSubmit(e)}>
+						<form onSubmit={handleSubmit}>
 							<TextField
 								margin="normal"
 								required
@@ -154,7 +154,6 @@ const Registration = () => {
 								variant="contained"
 								sx={{ mt: 3, mb: 2 }}
 								disabled={!validName || !validPwd || !validMatch ? true : false}
-								onClick={() => handleSubmit()}
 							>
 								Sign Up
 							</Button>
