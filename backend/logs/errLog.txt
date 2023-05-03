@@ -20,3 +20,6 @@
 20230502	23:02:30	c1333171-a66f-420c-b514-a9d9e9591812	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
 20230502	23:04:53	d82c5c0c-6626-4623-82f8-4ee2e45c6fce	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
 20230502	23:09:37	bf5a0529-bc9c-480a-8b82-4acd950734b2	SyntaxError: Unexpected string in JSON at position 21
+20230503	11:25:18	3d1f08ff-56ef-4c4b-aadd-e4df6035d5ea	Error: Not allowed by CORS
+20230503	11:33:39	b6989564-6437-45a0-a7d7-c1b5bfa92622	Error: Not allowed by CORS
+20230503	11:33:41	e3f025fb-a306-451e-9dfd-b03a46825f56	Error: Not allowed by CORS

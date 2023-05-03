@@ -160,7 +160,7 @@ const Registration = () => {
 						</form>
 						<Grid container>
 							<Grid item>
-								<Link href="#" variant="body2">
+								<Link href="/" variant="body2">
 									{"Already registered? Sign In"}
 								</Link>
 							</Grid>
@@ -169,7 +169,6 @@ const Registration = () => {
 					)
 				}
 			</Card>
-
 		</section>
 	)
 }

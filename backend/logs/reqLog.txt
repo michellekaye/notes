@@ -45,3 +45,6 @@
 20230502	23:09:37	8fae404f-aba7-407b-8b4c-f742512da957	POST	undefined	/auth
 20230502	23:09:42	1f99fc1b-c6a2-463f-96e6-4d6c60689ad9	POST	undefined	/auth
 20230502	23:09:47	46f1aad6-e40d-4705-97d6-d77b1834a6f3	POST	undefined	/auth
+20230503	11:25:18	9eddaa5b-b7a4-4def-a86f-3b5d429b1141	OPTIONS	http://localhost:3000	/register
+20230503	11:33:39	70b2c3e5-3dc2-4d38-b5af-bf5a3c539525	OPTIONS	http://localhost:3000	/login
+20230503	11:33:41	c9da9120-7f8e-489a-8ae9-c153729dd956	OPTIONS	http://localhost:3000	/login
