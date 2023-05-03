@@ -1,12 +1,1 @@
-[
-    {
-        "id": 1,
-        "firstname": "Michelle",
-        "lastname": "Lagunsad"
-    },
-    {
-        "id": 2,
-        "firstname": "John",
-        "lastname": "Doe"
-    }
-]
+[{"username":"Walt","password":"$2b$10$HUMJDE/gf6cxAqJzaSboG.quavJ6viAx7Wk5sLyUl.Aoa3FEC2ql."},{"username":"Billy","password":"$2b$10$asbXw2m0I3mSdL5slFjO3OnpdMthjhyMxIym2kc/fFL546vQQ2awy"}]

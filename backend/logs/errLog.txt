@@ -10,3 +10,13 @@
 20230502	22:24:36	a24644bb-bbd6-48b3-ad99-6c4e151fa9e5	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
 20230502	22:25:10	f1e225ec-337e-45e2-b89f-dd712d2766a0	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
 20230502	22:30:15	64be99d8-8003-4815-a393-1deed354700a	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:02:16	c8eaecdb-d114-4e88-b9a0-6d68d984a0c3	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:02:16	7334dbd4-e6a6-4a9e-88ab-c8d9b18cc92d	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:02:21	7b77b882-b65c-41eb-808a-d638382e9366	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:02:21	a379b996-fd7c-4a67-8477-8d185c24cbea	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:02:28	ff88ea10-c3d6-4928-acce-052ded7bc6fe	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:02:28	336f7c93-0469-4719-a681-07417f7cc4bc	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:02:30	d457e8ba-7b13-47b8-a6c8-eab3fb63bb25	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:02:30	c1333171-a66f-420c-b514-a9d9e9591812	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:04:53	d82c5c0c-6626-4623-82f8-4ee2e45c6fce	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230502	23:09:37	bf5a0529-bc9c-480a-8b82-4acd950734b2	SyntaxError: Unexpected string in JSON at position 21
