@@ -19,21 +19,34 @@ const Registration = () => {
 
 	const [user, setUser] = useState('');
 	const [validName, setValidName] = useState(false);
-	const [userFocus, setUserFocus] = useState(false);
 
 	const [pwd, setPwd] = useState('');
 	const [validPwd, setValidPwd] = useState(false);
-	const [pwdFocus, setPwdFocus] = useState(false);
 
 	const [matchPwd, setMatchPwd] = useState('');
 	const [validMatch, setValidMatch] = useState(false);
-	const [matchFocus, setMatchFocus] = useState(false);
 
 	const [errMsg, setErrMsg] = useState('');
 	const [success, setSuccess] = useState(false);
 
+	useEffect(() => {
+		const result = USER_REGEX.test(user);
+		setValidName(result);
+	}, [user])
+
+	useEffect(() => {
+		const result = PWD_REGEX.test(pwd);
+		setValidPwd(result);
+		const match = pwd === matchPwd;
+		setValidMatch(match);
+	}, [pwd, matchPwd])
+
+	useEffect(() => {
+			setErrMsg('');
+	}, [user, pwd, matchPwd])
+
 	return (
-		<div className="registration">
+		<section className="registration">
 			<Card variant="outlined" className="registration__card">
 				<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <PersonAddIcon />
@@ -42,58 +55,85 @@ const Registration = () => {
 				<Typography component="h1" variant="h5" gutterBottom>
 					Registration
 				</Typography>
-
-				<TextField
-					margin="normal"
-					required
-					fullWidth
-					id="username"
-					label="Username"
-					name="username"
-					autoFocus
-				/>
 				
-				<TextField
-					margin="normal"
-					required
-					fullWidth
-					name="password"
-					label="Password"
-					type="password"
-					id="password"
-					autoComplete="current-password"
-				/>
+				{success ? (
+					<>
+						<p>Registered successfully!</p>
+						<Button
+							fullWidth
+							variant="contained"
+							sx={{ mt: 3, mb: 2 }}
+						>
+							Sign In
+						</Button>
+					</>
+				) : (
+					<>
+						<form onSubmit={() => console.log("submit!")}>
+							<TextField
+								margin="normal"
+								required
+								fullWidth
+								id="username"
+								label="Username"
+								name="username"
+								autoFocus
+								error={(!validName && !!user.length)}
+								helperText={(!validName && user.length) ? "Invalid username" : ""}
+								onChange={(e) => setUser(e.target.value)}
+							/>
+							
+							<TextField
+								margin="normal"
+								required
+								fullWidth
+								name="password"
+								label="Password"
+								type="password"
+								id="password"
+								autoComplete="current-password"
+								error={(!validPwd && !!pwd.length)}
+								helperText={(!validPwd && pwd.length) ? "Invalid password" : ""}
+								onChange={(e) => setPwd(e.target.value)}
+							/>
 
-				<TextField
-					margin="normal"
-					required
-					fullWidth
-					name="confirmPassword"
-					label="Confirm Password"
-					type="password"
-					id="confirmPassword"
-					autoComplete="confirm-password"
-				/>
+							<TextField
+								margin="normal"
+								required
+								fullWidth
+								name="confirmPassword"
+								label="Confirm Password"
+								type="password"
+								id="confirmPassword"
+								autoComplete="confirm-password"
+								error={(!validMatch && !!matchPwd.length)}
+								helperText={(!validMatch && matchPwd.length) ? "Password doesn't match." : ""}
+								onChange={(e) => setMatchPwd(e.target.value)}
+							/>
 
-				<Button
-					type="submit"
-					fullWidth
-					variant="contained"
-					sx={{ mt: 3, mb: 2 }}
-				>
-					Sign Up
-				</Button>
-
-				<Grid container>
-					<Grid item>
-						<Link href="#" variant="body2">
-							{"Already registered? Sign In"}
-						</Link>
-					</Grid>
-				</Grid>
+							<Button
+								type="submit"
+								fullWidth
+								variant="contained"
+								sx={{ mt: 3, mb: 2 }}
+								disabled={!validName || !validPwd || !validMatch ? true : false}
+							>
+								Sign Up
+							</Button>
+						</form>
+						<Grid container>
+							<Grid item>
+								<Link href="#" variant="body2">
+									{"Already registered? Sign In"}
+								</Link>
+							</Grid>
+						</Grid>
+					</>
+					)
+				}
 			</Card>
 
-		</div>
+		</section>
 	)
 }
 
