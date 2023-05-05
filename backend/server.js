@@ -2,9 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
+const verifyJwt = require('./middleware/verifyJwt');
 const PORT = process.env.PORT || 3500;
 
 // custom middleware logger
@@ -19,10 +21,16 @@ app.use(express.urlencoded({ extended: false }));
 // built-in middleware for json 
 app.use(express.json());
 
+// middleware for cookies
+app.use(cookieParser());
+
 // routes
-app.use('/users', require('./routes/api/users'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));	
+app.use('/refresh', require('./routes/refresh'));
+
+app.use(verifyJwt);
+app.use('/users', require('./routes/api/users'));
 
 app.all('*', (req, res) => {
     res.status(404);

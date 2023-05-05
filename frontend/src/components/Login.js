@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from '../context/AuthProvider';
 import axios from '../api/axios';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
@@ -12,9 +13,10 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import './Login.css';
 
-const LOGIN_URL = '/login';
+const LOGIN_URL = '/auth';
 
 const Login = () => {
+	const { setAuth } = useContext(AuthContext);
 	const [name, setName] = useState('');
 	const [pwd, setPwd] = useState('');
 	const [errMsg, setErrMsg] = useState('');
@@ -35,15 +37,22 @@ const Login = () => {
 						withCredentials: true
 				}
 			);
-			console.log(response?.data);
-			console.log(response?.accessToken);
-			console.log(JSON.stringify(response))
+			console.log(JSON.stringify(response?.data))
+			const accessToken = response?.data?.accessToken;
+			const roles = response?.data?.roles;
+			setAuth({ user: name, pwd, roles, accessToken });
 			setSuccess(true);
 			setName('');
 			setPwd('');
 		} catch (err) {
 				if (!err?.response) {
-						setErrMsg('No Server Response');
+					setErrMsg('No Server Response');
+				} else if (err.response?.status === 400) {
+					setErrMsg("Missing username or password.");
+				} else if (err.response?.status === 401) {
+					setErrMsg("Unauthorized");
+				} else {
+					setErrMsg("Login failed.")
 				}
 		}
 	}

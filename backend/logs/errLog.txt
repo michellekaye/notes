@@ -23,3 +23,14 @@
 20230503	11:25:18	3d1f08ff-56ef-4c4b-aadd-e4df6035d5ea	Error: Not allowed by CORS
 20230503	11:33:39	b6989564-6437-45a0-a7d7-c1b5bfa92622	Error: Not allowed by CORS
 20230503	11:33:41	e3f025fb-a306-451e-9dfd-b03a46825f56	Error: Not allowed by CORS
+20230503	11:56:39	49aca1f4-0ace-4e2b-81bc-32ff81fefe2e	Error: Not allowed by CORS
+20230503	11:57:05	181c976c-f502-4299-9655-394c49f6a06d	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230503	11:57:06	9949a7f6-c5b3-48df-b164-6d58c8c2fa56	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230503	13:08:27	8d30730c-7a30-439a-b8d5-5567f8c129de	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230503	13:08:38	df8a6b49-7a10-4fd7-8970-65b4a29a6063	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230503	13:10:37	1f57c419-bd8e-4353-bb65-a7aac15e12c5	Error: ENOENT: no such file or directory, stat '/Users/michelle/Sites/personal/registration/backend/views/404.html'
+20230504	17:47:07	f558c25a-3e12-4cce-b3a5-b4e26dd852b1	TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Socket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+20230504	17:48:25	92c6fbfd-808e-4840-836c-96bc776f68b7	ReferenceError: s is not defined
