@@ -11,17 +11,23 @@ const path = require('path');
 
 const handleLogin = async (req, res) => {
     const { user, pwd } = req.body;
-    if (!user || !pwd) return res.sendStatus(400).json({ 'message': 'Username and password are required.' });
-		const foundUser = usersDB.users.find(person => person.username === user);
+    if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
+    const foundUser = usersDB.users.find(person => person.username === user);
     if (!foundUser) return res.sendStatus(401); //Unauthorized 
     // evaluate password 
     const match = await bcrypt.compare(pwd, foundUser.password);
     if (match) {
+        const roles = Object.values(foundUser.roles);
         // create JWTs
         const accessToken = jwt.sign(
-            { "username": foundUser.username },
+            {
+                "UserInfo": {
+                    "username": foundUser.username,
+                    "roles": roles
+                }
+            },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '30m' }
+            { expiresIn: '30s' }
         );
         const refreshToken = jwt.sign(
             { "username": foundUser.username },
