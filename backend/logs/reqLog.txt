@@ -165,3 +165,5 @@
 20230504	18:16:42	8c8b7c97-f613-4e7b-913a-3125f1482d36	GET	undefined	/users
 20230504	18:17:05	d42fbe23-2833-4845-ba01-f41e5dfbb082	GET	undefined	/logout
 20230504	18:17:10	2313a36a-da07-451f-b254-4dbb4fad527c	GET	undefined	/users
+20230504	20:16:45	15401c4d-dfb9-4bf2-a36e-394e32e6e13e	OPTIONS	http://localhost:3000	/auth
+20230504	20:16:45	beaa7a67-b02e-4bfd-9a2e-96107f1f4a46	POST	http://localhost:3000	/auth
