@@ -36,30 +36,56 @@ export default function AdminDashboard(props) {
       <Toolbar />
       <Divider />
       <List>
-        {['Cook', 'Play', 'Portfolio', 'Users', ].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+				{[
+					{
+						title: 'Cook',
+						url: '/cook'
+					},
+					{
+						title: 'Play',
+						url: '/play'
+					},
+					{
+						title: 'Portfolio',
+						url: '/portfolio'
+					},
+					{
+						title: 'Users',
+						url: '/users'
+					}
+				].map((link, index) => (
+          <ListItem key={link.url} disablePadding>
+            <ListItemButton href={link.url}>
               <ListItemIcon>
 								{index / 1 === 0 && <RestaurantIcon />}
 								{index / 1 === 1 && <CasinoIcon />}
 								{index / 2 === 1 && <BookIcon />}
 								{index / 3 === 1 && <GroupIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={link.title} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {['Profile', 'Sign out'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+				{[
+					{
+						title: 'Profile',
+						url: '/profile'
+					},
+					{
+						title: 'Sign out',
+						url: '/logout'
+					}
+				].map((link, index) => (
+          <ListItem key={link.url} disablePadding>
+            <ListItemButton href={link.url}>
               <ListItemIcon>
 								{index / 1 === 0 && <AccountBoxIcon />}
 								{index / 1 === 1 && <LogoutIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={link.title} />
             </ListItemButton>
           </ListItem>
         ))}

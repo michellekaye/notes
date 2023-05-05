@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Admin from './components/Admin';
 import AdminDashboard from './components/AdminDashboard';
-import UserDashboard from './components/UserDashboard';
 import Home from './components/Home';
 import Layout from "./components/Layout";
 import Login from './components/Login';
@@ -11,6 +10,7 @@ import Unauthorized from './components/Unauthorized';
 import Registration from './components/Registration';
 import RequireAuth from './components/RequireAuth';
 import SiteMap from './components/SiteMap';
+import Users from './components/Users';
 import './App.css';
 
 const ROLES = {
@@ -36,11 +36,13 @@ function App() {
 				<Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path="/admin" element={<Admin />} />
 				</Route>
-			</Route>
 
-			<Route path="/" element={<UserDashboard />}>
+				<Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+					<Route path="/users" element={<Users />} />
+				</Route>
+
 				<Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-          <Route path="/profile" element={<Profile />} />
+					<Route path="/profile" element={<Profile />} />
 				</Route>
 			</Route>
 

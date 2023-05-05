@@ -17,6 +17,7 @@ const handleNewUser = async (req, res) => {
 		const hashedPwd = await bcrypt.hash(pwd, 10);
 		//store the new users
 		const newUser = {
+			"id": usersDB.users?.length ? usersDB.users[usersDB.users.length - 1].id + 1 : 1,
 			"username": user, 
 			"roles": {
 				"User": 2001

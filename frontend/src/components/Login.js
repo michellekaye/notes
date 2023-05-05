@@ -55,7 +55,6 @@ const Login = () => {
 
 			setName('');
 			setPwd('');
-			alert("Success!");
 			navigate(from, { replace: true });
 		} catch (err) {
 				if (!err?.response) {

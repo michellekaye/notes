@@ -34,3 +34,11 @@
     |     property 'parser' -> object with constructor 'HTTPParser'
     --- property 'socket' closes the circle
 20230504	17:48:25	92c6fbfd-808e-4840-836c-96bc776f68b7	ReferenceError: s is not defined
+20230505	15:37:19	cfd99edb-4976-415d-8643-61372fefdf88	Error: Cannot set headers after they are sent to the client
+20230505	15:37:19	a85ca099-3c63-4850-bd7f-0eac6bab4c84	Error: Cannot set headers after they are sent to the client
+20230505	15:37:43	709643f6-857a-4db5-81dc-cd64000f6b18	Error: Cannot set headers after they are sent to the client
+20230505	15:41:01	b7c4e7f0-0b84-4835-8254-810dd0eaac31	Error: Cannot set headers after they are sent to the client
+20230505	15:41:39	81bec7ac-cd10-4fc5-967b-0a068ddc39fe	Error: Cannot set headers after they are sent to the client
+20230505	15:44:06	32c26a0e-888b-4894-867b-b9a54da3dbd2	Error: Cannot set headers after they are sent to the client
+20230505	15:45:28	11143468-2a89-4709-b34e-7dd1e552c464	Error: Cannot set headers after they are sent to the client
+20230505	15:47:34	f89d1d23-d6b8-44c1-a379-3af11c6d3547	Error: Cannot set headers after they are sent to the client
