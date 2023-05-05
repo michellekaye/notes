@@ -58,10 +58,8 @@ const Registration = () => {
 						withCredentials: true
 				}
 			);
-			console.log(response?.data);
-			console.log(response?.accessToken);
-			console.log(JSON.stringify(response))
 			setSuccess(true);
+			setErrMsg('');
 			setName('');
 			setPwd('');
 			setMatchPwd('');
@@ -100,6 +98,7 @@ const Registration = () => {
 							fullWidth
 							variant="contained"
 							sx={{ mt: 3, mb: 2 }}
+							href="/login"
 						>
 							Sign In
 						</Button>
@@ -160,7 +159,7 @@ const Registration = () => {
 						</form>
 						<Grid container>
 							<Grid item>
-								<Link href="/" variant="body2">
+								<Link href="/login" variant="body2">
 									{"Already registered? Sign In"}
 								</Link>
 							</Grid>

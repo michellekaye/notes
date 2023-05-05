@@ -1,5 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import AuthContext from '../context/AuthProvider';
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 import axios from '../api/axios';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
@@ -16,11 +17,15 @@ import './Login.css';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
-	const { setAuth } = useContext(AuthContext);
+	const { setAuth, auth } = useAuth();
+
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || "/";
+
 	const [name, setName] = useState('');
 	const [pwd, setPwd] = useState('');
 	const [errMsg, setErrMsg] = useState('');
-	const [success, setSuccess] = useState(false);
 
 	useEffect(() => {
 		setErrMsg('');
@@ -37,13 +42,16 @@ const Login = () => {
 						withCredentials: true
 				}
 			);
-			console.log(JSON.stringify(response?.data))
+
 			const accessToken = response?.data?.accessToken;
 			const roles = response?.data?.roles;
+			
 			setAuth({ user: name, pwd, roles, accessToken });
-			setSuccess(true);
+
 			setName('');
 			setPwd('');
+			alert("Success!");
+			navigate(from, { replace: true });
 		} catch (err) {
 				if (!err?.response) {
 					setErrMsg('No Server Response');
@@ -73,57 +81,48 @@ const Login = () => {
 						<Alert severity="error">{errMsg}</Alert>
 					</Stack>
 				)}
-				
-				{success ? (
-					<>
-						<p>Login successful!</p>
-					</>
-				) : (
-					<>
-						<form onSubmit={handleSubmit}>
-							<TextField
-								margin="normal"
-								required
-								fullWidth
-								id="username"
-								label="Username"
-								name="username"
-								autoFocus
-								onChange={(e) => setName(e.target.value)}
-							/>
-							
-							<TextField
-								margin="normal"
-								required
-								fullWidth
-								name="password"
-								label="Password"
-								type="password"
-								id="password"
-								autoComplete="current-password"
-								onChange={(e) => setPwd(e.target.value)}
-							/>
+			
+				<form onSubmit={handleSubmit}>
+					<TextField
+						margin="normal"
+						required
+						fullWidth
+						id="username"
+						label="Username"
+						name="username"
+						autoFocus
+						onChange={(e) => setName(e.target.value)}
+					/>
+					
+					<TextField
+						margin="normal"
+						required
+						fullWidth
+						name="password"
+						label="Password"
+						type="password"
+						id="password"
+						autoComplete="current-password"
+						onChange={(e) => setPwd(e.target.value)}
+					/>
 
-							<Button
-								type="submit"
-								fullWidth
-								variant="contained"
-								sx={{ mt: 3, mb: 2 }}
-								disabled={!name || !pwd ? true : false}
-							>
-								Sign In
-							</Button>
-						</form>
-						<Grid container>
-							<Grid item>
-								<Link href="/register" variant="body2">
-									{"Don't have an account? Sign Up"}
-								</Link>
-							</Grid>
-						</Grid>
-					</>
-					)
-				}
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						sx={{ mt: 3, mb: 2 }}
+						disabled={!name || !pwd ? true : false}
+					>
+						Sign In
+					</Button>
+				</form>
+				<Grid container>
+					<Grid item>
+						<Link href="/register" variant="body2">
+							{"Don't have an account? Sign Up"}
+						</Link>
+					</Grid>
+				</Grid>
 			</Card>
 		</section>
 	)
