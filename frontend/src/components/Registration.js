@@ -4,6 +4,7 @@ import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
@@ -75,7 +76,7 @@ const Registration = () => {
 	}
 
 	return (
-		<section className="registration">
+		<Container className="registration" component="section" maxWidth="xs">
 			<Card variant="outlined" className="registration__card">
 				<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <PersonAddIcon />
@@ -168,7 +169,7 @@ const Registration = () => {
 					)
 				}
 			</Card>
-		</section>
+		</Container>
 	)
 }
 

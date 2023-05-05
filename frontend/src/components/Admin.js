@@ -2,9 +2,10 @@ import Typography from '@mui/material/Typography';
 
 const Admin = () => {
 	return (
-		<Typography component="h1" variant="h5" gutterBottom>
-			Admin
+		<Typography component="h2" variant="h5" gutterBottom>
+			Welcome to your admin dashboard
 		</Typography>
+
 	)
 }
 

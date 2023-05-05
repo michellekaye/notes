@@ -5,6 +5,7 @@ import axios from '../api/axios';
 import Alert from '@mui/material/Alert';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
@@ -17,7 +18,7 @@ import './Login.css';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
-	const { setAuth, auth } = useAuth();
+	const { setAuth } = useAuth();
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -45,6 +46,10 @@ const Login = () => {
 
 			const accessToken = response?.data?.accessToken;
 			const roles = response?.data?.roles;
+
+			console.log('in login');
+			console.log('roles');
+			console.log(roles);
 			
 			setAuth({ user: name, pwd, roles, accessToken });
 
@@ -66,7 +71,7 @@ const Login = () => {
 	}
 
 	return (
-		<section className="login">
+		<Container className="login" component="section" maxWidth="xs">
 			<Card variant="outlined" className="login__card">
 				<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LoginIcon />
@@ -124,7 +129,7 @@ const Login = () => {
 					</Grid>
 				</Grid>
 			</Card>
-		</section>
+	</Container>
 	)
 }
 

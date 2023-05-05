@@ -13,7 +13,6 @@ const SiteMap = () => {
 				Public
 			</Typography>
 			<Stack spacing={2}>
-				<Link href="/">Home</Link>
 				<Link href="/login">Login</Link>
 				<Link href="/register">Register</Link>
 			</Stack>
@@ -22,6 +21,7 @@ const SiteMap = () => {
 				Private
 			</Typography>
 			<Stack spacing={2}>
+				<Link href="/">Home</Link>
 				<Link href="/admin">Admin</Link>
 				<Link href="/profile">Profile</Link>
 			</Stack>
