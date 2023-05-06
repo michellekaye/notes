@@ -5,7 +5,7 @@ import Layout from "./components/Layout";
 import LayoutDashboard from "./components/LayoutDashboard";
 import LayoutMinimal from "./components/LayoutMinimal";
 import Editor from "./components/Editor";
-import Admin from "./components/Admin";
+import Users from "./components/Users";
 import Missing from "./components/Missing";
 import Unauthorized from "./components/Unauthorized";
 import Lounge from "./components/Lounge";
@@ -44,7 +44,7 @@ function App() {
 						</Route>
 
 						<Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-							<Route path="admin" element={<Admin />} />
+							<Route path="users" element={<Users />} />
 						</Route>
 
 						<Route
@@ -58,7 +58,9 @@ function App() {
 				</Route>
 
 				{/* catch all */}
-				<Route path="*" element={<Missing />} />
+				<Route element={<LayoutMinimal />}>
+					<Route path="*" element={<Missing />} />
+				</Route>
 			</Route>
 		</Routes>
 	);

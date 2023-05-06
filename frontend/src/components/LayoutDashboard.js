@@ -19,7 +19,7 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, Link as RouterLink } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
 import "./LayoutDashboard.css";
 
@@ -65,7 +65,7 @@ const Dashboard = (props) => {
 					},
 				].map((link, index) => (
 					<ListItem key={link.url} disablePadding>
-						<ListItemButton href={link.url}>
+						<ListItemButton to={link.url} component={RouterLink}>
 							<ListItemIcon>
 								{index / 1 === 0 && <RestaurantIcon />}
 								{index / 1 === 1 && <CasinoIcon />}
@@ -90,7 +90,7 @@ const Dashboard = (props) => {
 					},
 				].map((link, index) => (
 					<ListItem key={link.url} disablePadding>
-						<ListItemButton href={link.url}>
+						<ListItemButton to={link.url} component={RouterLink}>
 							<ListItemIcon>
 								{index / 1 === 0 && <AccountBoxIcon />}
 								{index / 1 === 1 && <LogoutIcon onClick={signOut} />}

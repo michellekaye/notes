@@ -1,20 +1,31 @@
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Card from "@mui/material/Card";
+import Typography from "@mui/material/Typography";
+import DoDisturbIcon from "@mui/icons-material/DoDisturb";
 
 const Unauthorized = () => {
-    const navigate = useNavigate();
+	return (
+		<Container className="unauthorized" component="section" maxWidth="xs">
+			<Card variant="outlined" className="minimal__card">
+				<Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+					<DoDisturbIcon />
+				</Avatar>
 
-    const goBack = () => navigate(-1);
+				<Typography component="h1" variant="h5" gutterBottom>
+					Unauthorized
+				</Typography>
 
-    return (
-        <section>
-            <h1>Unauthorized</h1>
-            <br />
-            <p>You do not have access to the requested page.</p>
-            <div className="flexGrow">
-                <button onClick={goBack}>Go Back</button>
-            </div>
-        </section>
-    )
-}
+				<p>You do not have access to the requested page.</p>
+				<br />
+				<Button variant="contained" component={Link} to="/login" fullWidth>
+					Sign in
+				</Button>
+			</Card>
+		</Container>
+	);
+};
 
-export default Unauthorized
+export default Unauthorized;
