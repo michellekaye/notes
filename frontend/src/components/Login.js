@@ -1,7 +1,21 @@
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-
+import { useNavigate, useLocation } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import LoginIcon from '@mui/icons-material/Login';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import './Login.css';
 import axios from '../api/axios';
 const LOGIN_URL = '/auth';
 
@@ -38,8 +52,6 @@ const Login = () => {
                     withCredentials: true
                 }
             );
-            console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response));
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
             setAuth({ user, pwd, roles, accessToken });
@@ -69,49 +81,72 @@ const Login = () => {
     }, [persist])
 
     return (
+        <Container className="login" component="section" maxWidth="xs">
+			<Card variant="outlined" className="login__card">
+				<Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+                    <LoginIcon />
+				</Avatar>
+				
+				<Typography component="h1" variant="h5" gutterBottom>
+					Sign in
+				</Typography>
 
-        <section>
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setUser(e.target.value)}
-                    value={user}
-                    required
-                />
+				{errMsg && (
+					<Stack sx={{ width: '100%', marginBottom: "1rem" }} spacing={2}>
+						<Alert ref={errRef} severity="error">{errMsg}</Alert>
+					</Stack>
+				)}
+			
+				<form onSubmit={handleSubmit}>
+					<TextField
+						margin="normal"
+						required
+						fullWidth
+						id="username"
+						label="Username"
+                        name="username"
+                        ref={userRef}
+						autoFocus
+						onChange={(e) => setUser(e.target.value)}
+					/>
+					
+					<TextField
+						margin="normal"
+						required
+						fullWidth
+						name="password"
+						label="Password"
+						type="password"
+						id="password"
+						autoComplete="current-password"
+						onChange={(e) => setPwd(e.target.value)}
+					/>
 
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setPwd(e.target.value)}
-                    value={pwd}
-                    required
-                />
-                <button>Sign In</button>
-                <div className="persistCheck">
-                    <input
-                        type="checkbox"
-                        id="persist"
-                        onChange={togglePersist}
-                        checked={persist}
-                    />
-                    <label htmlFor="persist">Trust This Device</label>
-                </div>
-            </form>
-            <p>
-                Need an Account?<br />
-                <span className="line">
-                    <Link to="/register">Sign Up</Link>
-                </span>
-            </p>
-        </section>
+                    <FormGroup>
+                        <FormControlLabel control={
+                            <Checkbox checked={persist} onChange={togglePersist} id="persist" />
+                        } label="Trust this device" />
+                    </FormGroup>
 
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						sx={{ mt: 3, mb: 2 }}
+						disabled={!user || !pwd ? true : false}
+					>
+						Sign In
+					</Button>
+				</form>
+				<Grid container>
+					<Grid item>
+						<Link href="/register" variant="body2">
+							{"Don't have an account? Sign Up"}
+						</Link>
+					</Grid>
+				</Grid>
+			</Card>
+	    </Container>
     )
 }
 
