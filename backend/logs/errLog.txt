@@ -44,3 +44,12 @@
 20230505	15:47:34	f89d1d23-d6b8-44c1-a379-3af11c6d3547	Error: Cannot set headers after they are sent to the client
 20230505	16:30:44	7e131246-8a19-42c5-bb5e-b7bf2dc7eee5	TypeError: req.body.roles is not iterable
 20230505	17:01:19	b4fa41ef-47fa-4bf2-aa2b-cca909472a95	Error: Cannot set headers after they are sent to the client
+20230505	18:33:07	23a5f0fe-873e-466b-9a00-37eba90eef19	Error: Cannot set headers after they are sent to the client
+20230505	18:33:14	b6fd40f5-8ce0-4a4e-82a0-caaa1265622c	Error: Cannot set headers after they are sent to the client
+20230505	20:19:03	50a50e1d-bc23-4650-8117-42f6dd2e05cd	Error: Cannot set headers after they are sent to the client
+20230505	20:19:14	81e9fb34-13d2-4dcd-933c-2e3af2d0ef56	Error: Cannot set headers after they are sent to the client
+20230505	20:19:51	3ee2f0d0-e201-4720-b08a-3b825e6a49ec	Error: Cannot set headers after they are sent to the client
+20230505	20:20:38	2197a726-537d-4d4b-a6a5-2a84ad54f98d	Error: Cannot set headers after they are sent to the client
+20230505	20:21:14	dad97be3-033e-4f89-b5ae-d1f296151e5d	Error: Cannot set headers after they are sent to the client
+20230505	20:21:43	21ab1259-e5e2-4ba0-bbdc-eebca360946a	Error: Cannot set headers after they are sent to the client
+20230505	20:23:29	ba339f02-346a-4a1f-bf09-55a8d8ccaa57	SyntaxError: Unexpected token } in JSON at position 85

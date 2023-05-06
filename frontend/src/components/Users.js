@@ -19,6 +19,11 @@ import useAuth from '../hooks/useAuth';
 import { useEffect } from 'react';
 
 const USERS_URL = '/users';
+const ROLES_LIST = {
+    "Admin": 5150,
+    "Editor": 1984,
+    "User": 2001
+}
 
 const Users = () => {
 	const { auth } = useAuth();
@@ -49,7 +54,6 @@ const Users = () => {
 	}
 
 	const deleteUser = async (id) => {
-		console.log(`id: ${id}`);
 		const config = {
 			headers: { Authorization: `Bearer ${auth.accessToken}` },
 			data: {
@@ -71,6 +75,39 @@ const Users = () => {
 				setErrMsg("Bad request");
 			} else if (err.response?.status === 401) {
 				setErrMsg("Unauthorized to delete user.");
+			} else {
+				setErrMsg("Something went wrong.")
+			}
+		}
+	}
+
+	const updateUser = async (role, id) => {
+		const config = {
+			headers: { Authorization: `Bearer ${auth.accessToken}` },
+			data: {
+				id: id,
+				roles: {
+					[role]: ROLES_LIST[role],
+				},
+			}
+		};
+
+		try {
+			const response = await axios.put(USERS_URL,
+				config,
+			);
+
+			console.log(response);
+
+			setUsers(response?.data);
+
+		} catch (err) {
+			if (!err?.response) {
+				setErrMsg('No Server Response');
+			} else if (err.response?.status === 400) {
+				setErrMsg("Bad request");
+			} else if (err.response?.status === 401) {
+				setErrMsg("Unauthorized to edit user.");
 			} else {
 				setErrMsg("Something went wrong.")
 			}
@@ -120,9 +157,17 @@ const Users = () => {
 								<TableCell>
 									<Stack direction="row" spacing={1}>
 									{
-									Object.keys(user.roles).map((role) => (
-											<Chip label={role} variant="outlined"	/>
-										))
+											Object.keys(ROLES_LIST).map((role) => {
+												return (
+													<Chip
+														label={role}
+														variant={Object.keys(user.roles).includes(role.toString()) ? "default" : "outlined"}
+														color={Object.keys(user.roles).includes(role.toString()) ? "primary" : "default"}
+														clickable
+														onClick={() => updateUser(role, user.id)}
+													/>
+												)
+										})
 									}
 									</Stack>
 								</TableCell>
