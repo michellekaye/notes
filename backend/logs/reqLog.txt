@@ -1766,3 +1766,16 @@
 20230506	14:45:08	2017db1b-5e48-4b4f-b630-2f4f304bc679	POST	http://localhost:3000	/auth
 20230506	14:45:20	e3a9aaef-bef8-4dba-a088-73e04ec726da	OPTIONS	http://localhost:3000	/auth
 20230506	14:45:20	9231eb30-b233-4d83-b64b-a4824b8a54a3	POST	http://localhost:3000	/auth
+20230506	14:50:05	999b0f53-f712-4a12-847f-0752c5f6ee3d	OPTIONS	http://localhost:3000	/users
+20230506	14:50:05	cbd435fc-a536-4ed8-b6c3-980e046e4509	GET	http://localhost:3000	/users
+20230506	14:50:06	0f55db2f-d588-47da-acd1-d4d07dcfd9be	GET	http://localhost:3000	/refresh
+20230506	15:01:11	3a7bb98a-077b-44b8-8b46-12b3893f000b	GET	http://localhost:3000	/refresh
+20230506	15:01:47	98193942-be0f-49e5-bc54-7e8ba8f548c8	OPTIONS	http://localhost:3000	/auth
+20230506	15:01:47	67e51ae1-70c0-4abe-b6af-8e0fd80424fb	POST	http://localhost:3000	/auth
+20230506	15:01:48	fc3bd943-4dfd-4448-95d2-7a096d8fced2	OPTIONS	http://localhost:3000	/users
+20230506	15:01:48	4022e57e-1163-4253-aaf8-4c486a92c7de	GET	http://localhost:3000	/users
+20230506	15:02:35	2fd8b539-8632-4bd0-96d9-934324627915	OPTIONS	http://localhost:3000	/users
+20230506	15:02:35	b581594f-445a-460e-aafb-15e3ea88c205	GET	http://localhost:3000	/users
+20230506	15:02:43	c8352e45-3c1e-4358-9e87-bff748a3de80	OPTIONS	http://localhost:3000	/users
+20230506	15:02:43	fcaa5d77-e13a-4222-b3c9-c10d4716ca36	GET	http://localhost:3000	/users
+20230506	15:03:00	416a47ea-efa7-4e83-8bbc-996ab1b0ac6e	GET	http://localhost:3000	/refresh
