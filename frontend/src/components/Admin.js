@@ -1,12 +1,18 @@
-import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
+import Users from './Users';
 
 const Admin = () => {
-	return (
-		<Typography component="h2" variant="h5" gutterBottom>
-			Welcome to your admin dashboard
-		</Typography>
-
-	)
+    return (
+        <section>
+            <h1>Admins Page</h1>
+            <br />
+            <Users />
+            <br />
+            <div className="flexGrow">
+                <Link to="/">Home</Link>
+            </div>
+        </section>
+    )
 }
 
-export default Admin;
+export default Admin

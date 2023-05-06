@@ -19,14 +19,23 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import "./AdminDashboard.css";
+import useLogout from "../hooks/useLogout";
 
 const drawerWidth = 240;
 
 export default function AdminDashboard(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+	const [mobileOpen, setMobileOpen] = React.useState(false);
+	
+	const navigate = useNavigate();
+	const logout = useLogout();
+
+	const signOut = async () => {
+			await logout();
+			navigate('/linkpage');
+	}
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -77,14 +86,14 @@ export default function AdminDashboard(props) {
 					},
 					{
 						title: 'Sign out',
-						url: '/logout'
+						url: '/'
 					}
 				].map((link, index) => (
           <ListItem key={link.url} disablePadding>
             <ListItemButton href={link.url}>
               <ListItemIcon>
 								{index / 1 === 0 && <AccountBoxIcon />}
-								{index / 1 === 1 && <LogoutIcon />}
+								{index / 1 === 1 && <LogoutIcon onClick={signOut} />}
               </ListItemIcon>
               <ListItemText primary={link.title} />
             </ListItemButton>
