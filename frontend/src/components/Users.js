@@ -4,7 +4,7 @@ import Alert from '@mui/material/Alert';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+// import EditIcon from '@mui/icons-material/Edit';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,7 +15,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import axios from '../api/axios';
-import useAuth from '../hooks/useAuth';
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { useEffect } from 'react';
 
 const USERS_URL = '/users';
@@ -26,19 +26,13 @@ const ROLES_LIST = {
 }
 
 const Users = () => {
-	const { auth } = useAuth();
+	const axiosPrivate = useAxiosPrivate();
 	const [users, setUsers] = useState([]);
 	const [errMsg, setErrMsg] = useState('');
 	
 	const getUsers = async () => {
-		const config = {
-				headers: { Authorization: `Bearer ${auth.accessToken}` }
-		};
-
 		try {
-			const response = await axios.get(USERS_URL,
-				config,
-			);
+			const response = await axiosPrivate.get(USERS_URL);
 			setUsers(response?.data);
 		} catch (err) {
 			if (!err?.response) {
@@ -54,16 +48,13 @@ const Users = () => {
 	}
 
 	const deleteUser = async (id) => {
-		const config = {
-			headers: { Authorization: `Bearer ${auth.accessToken}` },
-			data: {
-				id: id,
-			}
-		};
-
 		try {
-			const response = await axios.delete(USERS_URL,
-				config,
+			const response = await axiosPrivate.delete(USERS_URL,
+				{
+					data: {
+						id: id,
+					}
+				},
 			);
 
 			setUsers(response?.data);
@@ -82,19 +73,16 @@ const Users = () => {
 	}
 
 	const updateUser = async (role, id) => {
-		const config = {
-			headers: { Authorization: `Bearer ${auth.accessToken}` },
-			data: {
-				id: id,
-				roles: {
-					[role]: ROLES_LIST[role],
-				},
-			}
-		};
-
 		try {
-			const response = await axios.put(USERS_URL,
-				config,
+			const response = await axiosPrivate.put(USERS_URL,
+				{
+					data: {
+						id: id,
+						roles: {
+							[role]: ROLES_LIST[role],
+						},
+					}
+				},
 			);
 
 			console.log(response);
@@ -160,6 +148,7 @@ const Users = () => {
 											Object.keys(ROLES_LIST).map((role) => {
 												return (
 													<Chip
+														key={role}
 														label={role}
 														variant={Object.keys(user.roles).includes(role.toString()) ? "default" : "outlined"}
 														color={Object.keys(user.roles).includes(role.toString()) ? "primary" : "default"}

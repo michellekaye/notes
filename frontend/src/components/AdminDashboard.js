@@ -20,6 +20,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Outlet } from 'react-router-dom';
+import "./AdminDashboard.css";
 
 const drawerWidth = 240;
 
@@ -147,7 +148,8 @@ export default function AdminDashboard(props) {
         </Drawer>
       </Box>
       <Box
-        component="main"
+				component="main"
+				className="dashboard__main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
