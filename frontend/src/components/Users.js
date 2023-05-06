@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -79,58 +81,70 @@ const Users = () => {
 		getUsers();
 	}, [])
 
-	console.log(users);
-
 	return (
-		<section className="users-table">
-			<Typography component="h2" variant="h5" gutterBottom>
-				Users
-			</Typography>
+		<>
+			<section className="users-table">
+				<Typography component="h2" variant="h5" gutterBottom>
+					Users
+				</Typography>
 
-			{errMsg && (
-				<Stack sx={{ width: '100%', marginBottom: "1rem" }} spacing={2}>
-					<Alert severity="error">{errMsg}</Alert>
-				</Stack>
-			)}
+				{errMsg && (
+					<Stack sx={{ width: '100%', marginBottom: "1rem" }} spacing={2}>
+						<Alert severity="error">{errMsg}</Alert>
+					</Stack>
+				)}
 
-			<TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Username</TableCell>
-            <TableCell>Roles</TableCell>
-						<TableCell align="right">Delete</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.map((user) => (
-            <TableRow
-              key={user.username}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {user.username}
-              </TableCell>
-							<TableCell>
-								<Stack direction="row" spacing={1}>
-								{
-								Object.keys(user.roles).map((role) => (
-										<Chip label={role} variant="outlined"	/>
-									))
-								}
-								</Stack>
-							</TableCell>
-							<TableCell align="right">
-								<IconButton aria-label="delete">
-									<DeleteIcon onClick={() => deleteUser(user.id)} />
-								</IconButton>
-							</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-		</section>
+				<TableContainer component={Paper}>
+				<Table sx={{ minWidth: 650 }} aria-label="simple table">
+					<TableHead>
+						<TableRow>
+							<TableCell>ID</TableCell>
+							<TableCell>Username</TableCell>
+							<TableCell>Roles</TableCell>
+							{/* <TableCell>Edit</TableCell> */}
+							<TableCell align="right">Delete</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{users.map((user) => (
+							<TableRow
+								key={user.id}
+								sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+							>
+								<TableCell component="th" scope="row">
+									{user.id}
+								</TableCell>
+								<TableCell component="th" scope="row">
+									{user.username}
+								</TableCell>
+								<TableCell>
+									<Stack direction="row" spacing={1}>
+									{
+									Object.keys(user.roles).map((role) => (
+											<Chip label={role} variant="outlined"	/>
+										))
+									}
+									</Stack>
+								</TableCell>
+								{/* <TableCell>
+									<IconButton aria-label="edit" href={`/users/${user.username}`}>
+										<EditIcon />
+									</IconButton>
+								</TableCell> */}
+								<TableCell align="right">
+									<IconButton aria-label="delete" onClick={() => deleteUser(user.id)}>
+										<DeleteIcon />
+									</IconButton>
+								</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+				</TableContainer>
+			</section>
+
+			<Outlet />
+		</>
 	)
 }
 

@@ -3,14 +3,17 @@ const data = {
 	setUsers: function (data) { this.users = data }
 };
 
+const fsPromises = require('fs').promises;
+const path = require('path');
+
 const getAllUsers = (req, res) => {
 	res.json(data.users);
 }
 
 const getUser = (req, res) => {
-	const user = data.users.find(user => user.id === parseInt(req.params.id));
+	const user = data.users.find(user => user.username === req.params.username);
 	if (!user) {
-			return res.sendStatus(400).json({ "message": `User ID ${req.params.id} not found` });
+			return res.sendStatus(400).json({ "message": `User with username ${req.params.username} not found` });
 	}
 	res.json(user);
 }
@@ -37,19 +40,24 @@ const updateUser = (req, res) => {
 	}
 	if (req.body.firstname) user.firstname = req.body.firstname;
 	if (req.body.lastname) user.lastname = req.body.lastname;
+	if (req.body.roles) user.roles = req.body.roles;
 	const filteredArray = data.users.filter(user => user.id !== parseInt(req.body.id));
 	const unsortedArray = [...filteredArray, user];
 	data.setUsers(unsortedArray.sort((a, b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0));
 	res.json(data.users);
 }
 
-const deleteUser = (req, res) => {
+const deleteUser = async(req, res) => {
 	const user = data.users.find(user => user.id === parseInt(req.body.id));
 	if (!user) {
 			return res.sendStatus(400).json({ "message": `User ID ${req.body.id} not found` });
 	}
 	const filteredArray = data.users.filter(user => user.id !== parseInt(req.body.id));
-	data.setUsers([...filteredArray]);
+	data.setUsers(filteredArray);
+	await fsPromises.writeFile(
+		path.join(__dirname, "..", "model", "users.json"),
+		JSON.stringify(data.users)
+	);
 	res.json(data.users);
 }
 

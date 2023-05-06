@@ -5,6 +5,7 @@ const usersDB = {
 const fsPromises = require('fs').promises;
 const path = require('path');
 const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 
 const handleNewUser = async (req, res) => {
 	const { user, pwd } = req.body;
@@ -17,7 +18,7 @@ const handleNewUser = async (req, res) => {
 		const hashedPwd = await bcrypt.hash(pwd, 10);
 		//store the new users
 		const newUser = {
-			"id": usersDB.users?.length ? usersDB.users[usersDB.users.length - 1].id + 1 : 1,
+			"id": uuidv4(),
 			"username": user, 
 			"roles": {
 				"User": 2001
@@ -29,7 +30,6 @@ const handleNewUser = async (req, res) => {
 			path.join(__dirname, "..", "model", "users.json"),
 			JSON.stringify(usersDB.users)
 		);
-		console.log(usersDB.user);
 		res.status(201).json({ "success": `New user ${user} created!` });
 	} catch (err) {
 		res.status(500).json({ 'message': err.message })

@@ -11,6 +11,7 @@ import Registration from './components/Registration';
 import RequireAuth from './components/RequireAuth';
 import SiteMap from './components/SiteMap';
 import Users from './components/Users';
+import User from './components/User';
 import './App.css';
 
 const ROLES = {
@@ -34,15 +35,18 @@ function App() {
 			<Route path="/" element={<AdminDashboard />}>
 				{/* protected routes*/}
 				<Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="/admin" element={<Admin />} />
+          <Route path="admin" element={<Admin />} />
 				</Route>
 
 				<Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-					<Route path="/users" element={<Users />} />
+					<Route path="users" element={<Users />}>
+						<Route path=':username' element={<User />} />
+					</Route>
+
 				</Route>
 
 				<Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-					<Route path="/profile" element={<Profile />} />
+					<Route path="profile" element={<Profile />} />
 				</Route>
 			</Route>
 

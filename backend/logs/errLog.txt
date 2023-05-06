@@ -42,3 +42,5 @@
 20230505	15:44:06	32c26a0e-888b-4894-867b-b9a54da3dbd2	Error: Cannot set headers after they are sent to the client
 20230505	15:45:28	11143468-2a89-4709-b34e-7dd1e552c464	Error: Cannot set headers after they are sent to the client
 20230505	15:47:34	f89d1d23-d6b8-44c1-a379-3af11c6d3547	Error: Cannot set headers after they are sent to the client
+20230505	16:30:44	7e131246-8a19-42c5-bb5e-b7bf2dc7eee5	TypeError: req.body.roles is not iterable
+20230505	17:01:19	b4fa41ef-47fa-4bf2-aa2b-cca909472a95	Error: Cannot set headers after they are sent to the client
