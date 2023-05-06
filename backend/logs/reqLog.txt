@@ -1748,3 +1748,5 @@
 20230506	09:08:30	1df6a1eb-7149-4fe5-95d5-f00f0273ff8c	GET	http://localhost:3000	/users
 20230506	09:09:08	f7c9439f-4b9e-4165-9c88-127acbea1c26	OPTIONS	http://localhost:3000	/users
 20230506	09:09:08	5fba5fe1-9312-438c-95a8-35b30b1c4341	GET	http://localhost:3000	/users
+20230506	09:16:40	60591c02-83b2-4057-86de-a98d8c7f5e71	OPTIONS	http://localhost:3000	/users
+20230506	09:16:40	7e175528-fda6-43c2-b36e-d6c5d672acc7	GET	http://localhost:3000	/users

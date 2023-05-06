@@ -11,3 +11,9 @@ html {
 body {
     min-height: 100vh;
 }
+
+#root,
+.App {
+    height: inherit;
+    min-height: 100vh;
+}
