@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Layout from "./components/Layout";
 import LayoutDashboard from "./components/LayoutDashboard";
 import LayoutMinimal from "./components/LayoutMinimal";
-import Editor from "./components/Editor";
+import Profile from "./components/Profile";
 import Users from "./components/Users";
 import Missing from "./components/Missing";
 import Unauthorized from "./components/Unauthorized";
@@ -40,7 +40,7 @@ function App() {
 						</Route>
 
 						<Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
-							<Route path="editor" element={<Editor />} />
+							<Route path="profile" element={<Profile />} />
 						</Route>
 
 						<Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
