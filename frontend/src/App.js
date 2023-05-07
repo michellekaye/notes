@@ -8,7 +8,6 @@ import Profile from "./components/Profile";
 import Users from "./components/Users";
 import Missing from "./components/Missing";
 import Unauthorized from "./components/Unauthorized";
-import Lounge from "./components/Lounge";
 import LinkPage from "./components/LinkPage";
 import RequireAuth from "./components/RequireAuth";
 import PersistLogin from "./components/PersistLogin";
@@ -39,20 +38,16 @@ function App() {
 							<Route path="/" element={<Home />} />
 						</Route>
 
-						<Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
-							<Route path="profile" element={<Profile />} />
-						</Route>
-
-						<Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-							<Route path="users" element={<Users />} />
-						</Route>
-
 						<Route
 							element={
 								<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />
 							}
 						>
-							<Route path="lounge" element={<Lounge />} />
+							<Route path="profile" element={<Profile />} />
+						</Route>
+
+						<Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+							<Route path="users" element={<Users />} />
 						</Route>
 					</Route>
 				</Route>

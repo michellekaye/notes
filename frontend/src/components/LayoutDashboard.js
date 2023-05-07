@@ -14,6 +14,7 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import CasinoIcon from "@mui/icons-material/Casino";
 import BookIcon from "@mui/icons-material/Book";
 import GroupIcon from "@mui/icons-material/Group";
+import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -48,6 +49,10 @@ const Dashboard = (props) => {
 			<List>
 				{[
 					{
+						title: "Home",
+						url: "/",
+					},
+					{
 						title: "Cook",
 						url: "/cook",
 					},
@@ -67,10 +72,11 @@ const Dashboard = (props) => {
 					<ListItem key={link.url} disablePadding>
 						<ListItemButton to={link.url} component={RouterLink}>
 							<ListItemIcon>
-								{index / 1 === 0 && <RestaurantIcon />}
-								{index / 1 === 1 && <CasinoIcon />}
-								{index / 2 === 1 && <BookIcon />}
-								{index / 3 === 1 && <GroupIcon />}
+								{index === 0 && <HomeIcon />}
+								{index === 1 && <RestaurantIcon />}
+								{index === 2 && <CasinoIcon />}
+								{index === 3 && <BookIcon />}
+								{index === 4 && <GroupIcon />}
 							</ListItemIcon>
 							<ListItemText primary={link.title} />
 						</ListItemButton>
@@ -124,7 +130,7 @@ const Dashboard = (props) => {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap component="div">
-						MK Applications
+						michelle-kaye.com
 					</Typography>
 				</Toolbar>
 			</AppBar>

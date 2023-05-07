@@ -1,33 +1,45 @@
-import { useNavigate, Link } from "react-router-dom";
-import useLogout from "../hooks/useLogout";
+import { Typography } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Card from "./Card";
+import cookImg from "../assets/images/cook-main.jpeg";
+import playImg from "../assets/images/play-main.jpeg";
+import portfolioImg from "../assets/images/portfolio-main.jpeg";
+
+const apps = [
+	{
+		img: cookImg,
+		title: "Cook",
+		body: "Recipe website to help Michelle get started on her cooking journey.",
+		url: "http://cook.michelle-kaye.com",
+	},
+	{
+		img: playImg,
+		title: "Play",
+		body: "A visual library of Michelle's complete board game collection.",
+		url: "http://play.michelle-kaye.com",
+	},
+	{
+		img: portfolioImg,
+		title: "Portfolio",
+		body: "Michelle's online CV, showcasing her work from over the years.",
+		url: "http://michelle-kaye.com",
+	},
+];
 
 const Home = () => {
-    const navigate = useNavigate();
-    const logout = useLogout();
+	return (
+		<>
+			<Typography component="h2" variant="h5" gutterBottom>
+				Home
+			</Typography>
 
-    const signOut = async () => {
-        await logout();
-        navigate('/linkpage');
-    }
+			<Stack spacing={2} direction={{ xs: "column", sm: "row" }}>
+				{apps.map((app) => (
+					<Card img={app.img} title={app.title} body={app.body} url={app.url} />
+				))}
+			</Stack>
+		</>
+	);
+};
 
-    return (
-        <section>
-            <h1>Home</h1>
-            <br />
-            <p>You are logged in!</p>
-            <br />
-            <Link to="/editor">Go to the Editor page</Link>
-            <br />
-            <Link to="/admin">Go to the Admin page</Link>
-            <br />
-            <Link to="/lounge">Go to the Lounge</Link>
-            <br />
-            <Link to="/linkpage">Go to the link page</Link>
-            <div className="flexGrow">
-                <button onClick={signOut}>Sign Out</button>
-            </div>
-        </section>
-    )
-}
-
-export default Home
+export default Home;
