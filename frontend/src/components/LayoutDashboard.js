@@ -10,13 +10,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
-import CasinoIcon from "@mui/icons-material/Casino";
-import BookIcon from "@mui/icons-material/Book";
 import GroupIcon from "@mui/icons-material/Group";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import EditIcon from "@mui/icons-material/Edit";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -49,20 +46,8 @@ const Dashboard = (props) => {
 			<List>
 				{[
 					{
-						title: "Home",
+						title: "Notes",
 						url: "/",
-					},
-					{
-						title: "Cook",
-						url: "/cook",
-					},
-					{
-						title: "Play",
-						url: "/play",
-					},
-					{
-						title: "Portfolio",
-						url: "/portfolio",
 					},
 					{
 						title: "Users",
@@ -72,11 +57,8 @@ const Dashboard = (props) => {
 					<ListItem key={link.url} disablePadding>
 						<ListItemButton to={link.url} component={RouterLink}>
 							<ListItemIcon>
-								{index === 0 && <HomeIcon />}
-								{index === 1 && <RestaurantIcon />}
-								{index === 2 && <CasinoIcon />}
-								{index === 3 && <BookIcon />}
-								{index === 4 && <GroupIcon />}
+								{index === 0 && <EditIcon />}
+								{index === 1 && <GroupIcon />}
 							</ListItemIcon>
 							<ListItemText primary={link.title} />
 						</ListItemButton>
@@ -87,10 +69,6 @@ const Dashboard = (props) => {
 			<List>
 				{[
 					{
-						title: "Profile",
-						url: "/profile",
-					},
-					{
 						title: "Sign out",
 						url: "/",
 					},
@@ -98,8 +76,7 @@ const Dashboard = (props) => {
 					<ListItem key={link.url} disablePadding>
 						<ListItemButton to={link.url} component={RouterLink}>
 							<ListItemIcon>
-								{index / 1 === 0 && <AccountBoxIcon />}
-								{index / 1 === 1 && <LogoutIcon onClick={signOut} />}
+								{index === 0 && <LogoutIcon onClick={signOut} />}
 							</ListItemIcon>
 							<ListItemText primary={link.title} />
 						</ListItemButton>
