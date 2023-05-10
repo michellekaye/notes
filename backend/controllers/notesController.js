@@ -15,12 +15,13 @@ const getAllNotes = (req, res) => {
 };
 
 const createNote = async (req, res) => {
-	const { userId, title, note } = req.body;
+	const { user, title, note } = req.body;
 
 	//store the new note
 	const newNote = {
 		id: uuidv4(),
-		author: userId,
+		createdDate: Date.now(),
+		author: user,
 		title: title,
 		note: note,
 	};
@@ -30,7 +31,7 @@ const createNote = async (req, res) => {
 		path.join(__dirname, "..", "model", "notes.json"),
 		JSON.stringify(notesDB.notes)
 	);
-	res.status(201).json({ success: `New note created!` });
+	res.json(notesDB.notes);
 };
 
 const deleteNote = async (req, res) => {

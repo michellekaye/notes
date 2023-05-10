@@ -1,3 +1,14 @@
 .form {
 	padding: 2rem;
 }
+
+.note {
+	padding: 2rem;
+	position: relative;
+}
+
+.delete {
+	position: absolute !important;
+	top: 1rem;
+	right: 1rem;
+}
