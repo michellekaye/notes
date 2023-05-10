@@ -15,12 +15,13 @@ const getAllNotes = (req, res) => {
 };
 
 const createNote = async (req, res) => {
-	const { userId, note } = req.body;
+	const { userId, title, note } = req.body;
 
 	//store the new note
 	const newNote = {
 		id: uuidv4(),
 		author: userId,
+		title: title,
 		note: note,
 	};
 
