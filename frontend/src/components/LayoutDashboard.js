@@ -11,7 +11,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import GroupIcon from "@mui/icons-material/Group";
-import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import EditIcon from "@mui/icons-material/Edit";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -32,7 +31,7 @@ const Dashboard = (props) => {
 
 	const signOut = async () => {
 		await logout();
-		navigate("/linkpage");
+		navigate("/login");
 	};
 
 	const handleDrawerToggle = () => {
@@ -74,7 +73,11 @@ const Dashboard = (props) => {
 					},
 				].map((link, index) => (
 					<ListItem key={link.url} disablePadding>
-						<ListItemButton to={link.url} component={RouterLink}>
+						<ListItemButton
+							to={link.url}
+							component={RouterLink}
+							onClick={signOut}
+						>
 							<ListItemIcon>
 								{index === 0 && <LogoutIcon onClick={signOut} />}
 							</ListItemIcon>
@@ -107,7 +110,7 @@ const Dashboard = (props) => {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap component="div">
-						michelle-kaye.com
+						Notes App
 					</Typography>
 				</Toolbar>
 			</AppBar>
@@ -115,7 +118,6 @@ const Dashboard = (props) => {
 				component="nav"
 				sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
 			>
-				{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
 				<Drawer
 					container={container}
 					variant="temporary"
