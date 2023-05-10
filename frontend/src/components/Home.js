@@ -74,7 +74,9 @@ const Home = () => {
 		}
 	};
 
-	const orderedNotes = notes.reverse();
+	const orderedNotes = notes.sort(function (a, b) {
+		return new Date(b.createdDate) - new Date(a.createdDate);
+	});
 
 	return (
 		<>
