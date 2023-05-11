@@ -1,53 +1,38 @@
-const { v4: uuidv4 } = require("uuid");
+const Note = require("../model/Note");
 
-const notesDB = {
-	notes: require("../model/notes.json"),
-	setNotes: function (data) {
-		this.notes = data;
-	},
-};
-
-const fsPromises = require("fs").promises;
-const path = require("path");
-
-const getAllNotes = (req, res) => {
-	res.json(notesDB.notes);
+const getAllNotes = async (req, res) => {
+	const notes = await Note.find();
+	if (!notes) return res.status(204).json({ message: "No notes found." });
+	res.json(notes);
 };
 
 const createNote = async (req, res) => {
 	const { user, title, note } = req.body;
 
-	//store the new note
-	const newNote = {
-		id: uuidv4(),
-		createdDate: Date.now(),
-		author: user,
-		title: title,
-		note: note,
-	};
-
-	notesDB.setNotes([...notesDB.notes, newNote]);
-	await fsPromises.writeFile(
-		path.join(__dirname, "..", "model", "notes.json"),
-		JSON.stringify(notesDB.notes)
-	);
-	res.json(notesDB.notes);
+	try {
+		const result = await Note.create({
+			author: user,
+			title: title,
+			note: note,
+		});
+		res.status(201).json(result);
+	} catch (err) {
+		console.error(err);
+	}
 };
 
 const deleteNote = async (req, res) => {
-	const note = notesDB.notes.find((note) => note.id === req.body.id);
+	if (!req?.body?.id)
+		return res.status(400).json({ message: "Note ID required." });
+
+	const note = await Note.findOne({ _id: req.body.id }).exec();
 	if (!note) {
 		return res
-			.sendStatus(400)
-			.json({ message: `Note ID ${req.body.id} not found` });
+			.status(204)
+			.json({ message: `No note matches ID ${req.body.id}.` });
 	}
-	const filteredArray = notesDB.notes.filter((note) => note.id !== req.body.id);
-	notesDB.setNotes(filteredArray);
-	await fsPromises.writeFile(
-		path.join(__dirname, "..", "model", "notes.json"),
-		JSON.stringify(notesDB.notes)
-	);
-	res.json(notesDB.notes);
+	const result = await note.deleteOne(); //{ _id: req.body.id }
+	res.json(result);
 };
 
 module.exports = {

@@ -7,7 +7,7 @@ const verifyRoles = require("../../middleware/verifyRoles");
 router
 	.route("/")
 	.get(notesController.getAllNotes)
-	.post(verifyRoles(ROLES_LIST.User), notesController.createNote)
-	.delete(verifyRoles(ROLES_LIST.User), notesController.deleteNote);
+	.post(notesController.createNote)
+	.delete(notesController.deleteNote);
 
 module.exports = router;
