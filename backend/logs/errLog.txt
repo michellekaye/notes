@@ -1,0 +1,3 @@
+20230510	21:06:00	d7ed56f8-2650-4a52-b907-ef87c6736014	Error: Not allowed by CORS
+20230510	21:06:03	84c0ea75-45af-42e3-9433-728ab9bb6646	Error: Not allowed by CORS
+20230510	21:06:15	c75f2b20-19cb-498e-9ccd-613ccebdfe44	Error: Not allowed by CORS

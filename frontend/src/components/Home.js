@@ -60,7 +60,9 @@ const Home = () => {
 				}
 			);
 
-			setNotes(response.data);
+			console.log(response.data);
+			console.log();
+			setNotes([...notes, response.data]);
 			setTitle("");
 			setNote("");
 		} catch (err) {
